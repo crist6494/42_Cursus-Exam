@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 20:27:06 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/15 20:42:07 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/06/16 17:15:30 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ Si el número de argumentos no es 1, sólo se muestra una nueva línea. */
 int	main (int argc, char **argv)
 {
 	int	letter = 0;
-	int	repeat = 1;
+	int	repeat = 0;
 	
 	if (argc == 2)
 	{
 		while (argv[1][letter])
 		{
 			if(argv[1][letter] >= 'a' && argv[1][letter] <= 'z')
-				repeat = argv[1][letter] + repeat - 'a';
+				repeat = argv[1][letter] + repeat - 'a' + 1;
 			else if(argv[1][letter] >= 'A' && argv[1][letter] <= 'Z')
-			repeat = argv[1][letter] + repeat - 'A';
+			repeat = argv[1][letter] + repeat - 'A' + 1;
 			while (repeat)
 			{
 				write(1, &argv[1][letter], 1);
