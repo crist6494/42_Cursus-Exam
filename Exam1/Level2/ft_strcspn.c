@@ -1,3 +1,5 @@
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -10,8 +12,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* calcula la longitud del segmento inicial de str1 , que consiste completamente en caracteres que no están en str2 .
- */
+/* La función strcspn  () calcula la longitud del segmento inicial de str1,
+que consiste completamente en caracteres que no están en str2 .*/
+
 #include <unistd.h>
 
 size_t	ft_strcspn(const char *s1, const char *s2)
@@ -40,8 +43,8 @@ int main ()
 {
 	char *s1;
 	char *s2;
-	s1 = "Heoeelllo";
-	s2 = "o";
+	s1 = "Hheoeelllo";
+	s2 = "oe";
 printf("%zu\n",ft_strcspn(s1, s2));
 printf("%zu\n",strcspn(s1, s2));
 }

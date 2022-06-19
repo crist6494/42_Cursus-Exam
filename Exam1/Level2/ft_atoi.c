@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
+/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 18:45:55 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/17 19:10:02 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/06/19 16:21:00 by cristian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// La función atoi() en C toma una cadena (que representa un número entero) como argumento y devuelve su valor de tipo int.
 
 #include <unistd.h>
 
