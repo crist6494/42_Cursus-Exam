@@ -3,13 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_alpha_mirror.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 16:38:46 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/19 16:20:39 by cristian         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:10:19 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* Escribe un programa llamado alpha_mirror que tome una cadena y muestre esta cadena
+después de reemplazar cada carácter alfabético por el carácter alfabético opuesto
+opuesto, seguido de una nueva línea.
+La 'a' se convierte en 'z', la 'Z' se convierte en 'A'
+la 'd' se convierte en 'w', la 'M' se convierte en 'N'
+ */
 #include <unistd.h>
 
 int	main (int argc, char **argv)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:47:37 by cristian          #+#    #+#             */
-/*   Updated: 2022/06/19 16:18:40 by cristian         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:35:36 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ que coincide con cualquier carácter especificado en s2
 
 #include <string.h>
 
-int	find_char(const char c, const char *s1)
+char	find_char(const char c, const char *s1)
 {
 	int	pos;
 	
@@ -27,6 +27,7 @@ int	find_char(const char c, const char *s1)
 			return (1);
 		pos++;
 	}
+   return (0);
 }
 char	*ft_strpbrk(const char *s1, const char *s2)
 {
