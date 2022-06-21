@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_union.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:36:14 by cristian          #+#    #+#             */
-/*   Updated: 2022/06/19 17:37:45 by cristian         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:00:27 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,39 +18,60 @@ Si el número de argumentos no es 2, el programa muestra \n. */
 
 #include <unistd.h>
 
-void	print_union(char *a, char *b)
+int	check_doubles(char *str, char c, int position)
 {
-	int characters[128] = { 0 };
-	int c;
+	int	pos;
 
-	while (*a != '\0')
+	pos = 0;
+	while (pos < position)
 	{
-		c = *a;
-		if (characters[c] == 0)
-		{
-			write(1, a, 1);
-			characters[c] = 1;
-		}
-		++a;
+		if (str[pos] == c)
+			return (0);
+		pos++;
 	}
-
-	while (*b != '\0')
-	{
-		c = *b;
-		if (characters[c] == 0)
-		{
-			write(1, b, 1);
-			characters[c] = 1;
-		}
-		++b;
-	}
+	return (1);
 }
 
-int		main(int argc, char **argv)
+int	check_doubles1(char *str, char c)
 {
-	if (argc == 3)
-		print_union(argv[1], argv[2]);
+	int	pos;
 
-	write(1, "\n", 1);
+	pos = 0;
+	while (str[pos])
+	{
+		if (str[pos] == c)
+			return (0);
+		pos++;
+	}
+	return (1);
+}
+
+#include <unistd.h>
+
+int	main(int argc, char **argv)
+{
+	int	pos;
+
+	pos = 0;
+	if (argc == 3)
+	{
+		while (argv[1][pos])
+		{
+			if (check_doubles(argv[1], argv[1][pos], pos))
+				write (1, &argv[1][pos], 1);
+			pos++;
+		}
+		pos = 0;
+		while (argv[2][pos])
+		{
+			if (check_doubles1(argv[1], argv[2][pos]))
+			{
+				if (check_doubles(argv[2],argv[2][pos], pos))
+					write (1, &argv[2][pos], 1);
+			}
+			pos++;
+		}
+	}
+	write (1, "\n", 1);
 	return (0);
 }

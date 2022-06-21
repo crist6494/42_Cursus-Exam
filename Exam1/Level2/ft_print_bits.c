@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:00:18 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/20 19:12:47 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:23:30 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	print_bits(unsigned char octet)
 		if (octet >= pos)
 		{
 			write (1, "1", 1);
-			octet = octet % pos;
-			pos = pos / 2;
+			octet = octet - pos;
 		}
 		else
 		{
