@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:34:53 by cristian          #+#    #+#             */
-/*   Updated: 2022/06/22 10:43:44 by cristian         ###   ########.fr       */
+/*   Updated: 2022/06/22 18:47:34 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,28 @@ una nueva línea. */
 int	main (int argc, char **argv)
 {
 	int	pos;
+	int	space;
 
+	space = 0;
 	pos = 0;
 	if (argc == 2)
 	{
 		while (argv[1][pos] == ' ' || argv[1][pos] == '\t')
 			pos++;
-		while(argv[1][pos])
+		while (argv[1][pos])
 		{
-			if (argv[1][pos] != ' ' || argv[1][pos] != '\t')
+			if (argv[1][pos] == ' ' || argv[1][pos] == '\t')
+				space = 1;
+			if (argv[1][pos] != ' ' && argv[1][pos] != '\t')
 			{
-				write (1, &argv[1][pos], 1);
-				if (argv[1][pos + 1] == ' ' || argv[1][pos + 1] == '\t')
+				if (space == 1)
+				{
 					write (1, "   ", 3);
-				pos++;
-			}
-			while (argv[1][pos] == ' ' || argv[1][pos] == '\t')
-				pos++;
+					space = 0;
+				}
+				write (1, &argv[1][pos], 1);				
+			}	
+			pos++;
 		}
 	}	
 	return (0);
