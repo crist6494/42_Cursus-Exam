@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
+/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:47:37 by cristian          #+#    #+#             */
-/*   Updated: 2022/06/20 16:35:36 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/06/22 10:23:52 by cristian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strpbrk(const char *s1, const char *s2)
 	{
 		if(find_char(*s1, s2) == 1)
 			return ((char *) s1);
-			s1++;
+		   s1++;
 	}
 	return (0);
 }
@@ -45,7 +45,7 @@ char	*ft_strpbrk(const char *s1, const char *s2)
 
 int main () {
    const char str1[] = "34";
-   const char str2[] = "534";
+   const char str2[] = "4";
    char *ret;
 
    ret = strpbrk(str1, str2);
