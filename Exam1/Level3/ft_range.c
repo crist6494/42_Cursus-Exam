@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 22:37:18 by cristian          #+#    #+#             */
-/*   Updated: 2022/06/26 23:03:42 by cristian         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:06:37 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,21 @@ devolver un puntero al primer valor del array */
 
 int	*ft_range(int start, int end)
 {
-	int	size;
 	int	*ptr;
-	int	*aux;
+	int	pos;
 
-	size = end - start;
-	if (size)
+
+	pos = 0;
+	ptr = (int *)malloc(sizeof(int) * (end - start));
+	if (ptr)
 	{
-		ptr = (int *)malloc(sizeof(int) * size);
-		if (ptr)
+		while (start <= end)
 		{
-			aux = ptr;
-			while (start <= end)
-			{
-				*ptr = start;
-				ptr++;
-				start++;
-			}
-			return (aux);
+			ptr[pos] = start;
+			pos++;
+			start++;
 		}
+		return (ptr);
 	}
 	return (0);
 }
