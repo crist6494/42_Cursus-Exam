@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:52:21 by cristian          #+#    #+#             */
-/*   Updated: 2022/06/27 20:23:21 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/06/28 17:28:00 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,15 @@ int	ft_atoi_base(const char *str, int str_base)
 	return (result);
 }
 
- #include <stdio.h>
-
- int		main(void)
-  {
-	 	printf("%d\n", ft_atoi_base("22", 11));
-  }
+#include <stdlib.h>
+#include <stdio.h>
+int	main(int ac, char **av)
+{
+	int		nb;
+	if (ac >= 3)
+	{
+		nb = ft_atoi_base(av[1], atoi(av[2]));
+		printf("%d\n", nb);
+	}
+	return (0);
+}
