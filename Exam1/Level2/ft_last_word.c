@@ -17,25 +17,28 @@ Si el número de parámetros no es 1, o no hay palabras, muestra una nueva líne
 
 #include <unistd.h>
 
-int	main(int argc, char **argv)
+void	last_word(char *str)
 {
-	int	pos;
+	int	j = 0;
+	int i = 0;
 
-	pos = 0;
-	if (argc == 2)
+	while (str[i])
 	{
-		while (argv[1][pos])
-			pos++;
-		pos--;
-		while (argv[1][pos] != ' ' && argv[1][pos] != '\t' && pos >= 0)
-			pos--;
-		//pos++;
-		while (argv[1][pos])
-		{
-			write (1, &argv[1][pos], 1);
-			pos++;
-		}
+		if (str[i] == ' ' && str[i + 1] >= 33 && str[i + 1] <= 126)
+			j = i + 1;
+		i++;
 	}
-	write (1, "\n", 1);
+	while (str[j] >= 33 && str[j] <= 127)
+	{
+		write(1, &str[j], 1);
+		j++;
+	}
+}
+
+int		main(int argc, char **argv)
+{
+	if (argc == 2)
+		last_word(argv[1]);
+	write(1, "\n", 1);
 	return (0);
 }
