@@ -23,11 +23,10 @@ int	check_doubles(char *str, char c, int position)
 	int	pos;
 
 	pos = 0;
-	while (pos < position)
+	while (str[pos] && (pos < position || position == -1)) 
 	{
-		if (str[pos] == c)
+		if (str[pos++] == c)
 			return (0);
-		pos++;
 	}
 	return (1);
 }
@@ -35,26 +34,14 @@ int	check_doubles(char *str, char c, int position)
 int main (int argc, char **argv)
 {
 	int	i;
-	int	j;
-
+	
 	i = 0;
-	j = 0;
 	if (argc == 3)
 	{
 		while (argv[1][i])
 		{
-			while (argv[2][j])
-			{
-				if (argv[1][i] == argv[2][j])
-				{
-					if (check_doubles (argv[1], argv[1][i], i))
-					{
-						write (1, &argv[1][i], 1);
-						break;
-					}
-				}
-				j++;
-			}
+			if (check_doubles(argv[1], argv[1][i], i) && !check_doubles(argv[2], argv[1][i], -1))
+				write (1, &argv[1][i], 1);
 			i++;
 		}
 	}
