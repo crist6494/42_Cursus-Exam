@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hidenp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:05:41 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/25 16:46:58 by cristian         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:35:30 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,24 @@ Traducción realizada con la versión gratuita del traductor www.DeepL.com/Trans
 
 #include <unistd.h>
 
-void	hidenp(char *s1, char *s2)
+int main(int argc, char **argv)
 {
-	while (*s1 != '\0')
-	{
-		while (*s1 != *s2 && *s2 != '\0')
-			s2++;
-		if (*s2 == '\0')
-		{
-			write(1, "0", 1);
-			return;
-		}
-		s2++;
-		s1++;
-	}
-	write(1, "1", 1);
-}
-
-int		main(int argc, char **argv)
-{
+	int i = 0;
+	int j = 0;
+	
 	if (argc == 3)
-		hidenp(argv[1], argv[2]);
+	{
+		while (argv[2][j] && argv[1][i])
+		{
+			if (argv[2][j] == argv[1][i])
+				i++;
+			j++;
+		}
+		if (argv[1][i] == '\0')
+			write(1, "1", 1);
+		else
+			write(1, "0", 1);
+	}
 	write(1, "\n", 1);
 	return (0);
 }

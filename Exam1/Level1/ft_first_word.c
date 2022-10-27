@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 19:14:24 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/15 20:06:47 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/09/22 19:07:01 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	main(int argc, char **argv)
 	
 	if (argc == 2)
 	{
+		while (argv[1][pos] == ' ' || argv[1][pos] == '\t')
+			pos++;
 		while(argv[1][pos] != ' ' && argv[1][pos] != '\0' && argv[1][pos] != '\t')
 		{
 			write(1, &argv[1][pos], 1);

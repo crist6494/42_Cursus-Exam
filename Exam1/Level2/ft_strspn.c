@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:12:33 by cristian          #+#    #+#             */
-/*   Updated: 2022/06/20 19:24:24 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:43:21 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ size_t	ft_strspn(const char *s1, const char *s2)
  int	main(void)
 {
  	char s1[] = "This  this is a test string";
- 	char s2[] = "Ths";
+ 	char s2[] = "This";
 
  	printf("%zu\n", ft_strspn(s1, s2));
  }

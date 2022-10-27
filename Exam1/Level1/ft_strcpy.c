@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 19:56:12 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/15 20:07:29 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:13:47 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char *ft_strcpy(char * dst, const char * src)
 	int	pos;
 
 	pos = 0;
-	while (dst[pos])
+	while (src[pos])
 	{
 		dst[pos] = src[pos];
 		pos++;
@@ -30,8 +30,8 @@ char *ft_strcpy(char * dst, const char * src)
 #include <stdio.h>
 int	main ()
 {
-	char src[] = "pepepepepe";
-	char dst[] = "Hola que tal";
+	char src[] = "pepep";
+	char dst[] = "Ho";
 
 	printf("%s", ft_strcpy(dst, src));
 }

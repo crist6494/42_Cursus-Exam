@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 19:36:03 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/16 19:54:47 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:52:02 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ int	main (int argc, char **argv)
 	int	pos;
 
 	pos = 0;
-	if (argc == 4)
+	if (argc == 4 && !argv[2][1] && !argv[3][1])
 	{
 		while (argv[1][pos])
 		{
 			if (argv[1][pos] == argv[2][0])
-				write (1, &argv[3][0], 1);
-			else
-				write (1, &argv[1][pos], 1);
+				argv[1][pos] = argv[3][0];
+			write (1, &argv[1][pos], 1);
 			pos++;
 		}
 	}

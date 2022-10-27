@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:04:56 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/29 18:27:31 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:48:04 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sort_int_tab(int *tab, unsigned int size)
 	int	tmp;
 
 	i = 0;
-	if (tab != 0)
+	if (tab)
 	{
 		while (i < size)
 		{

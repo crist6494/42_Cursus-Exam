@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rstr_capitalizer.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 12:47:13 by cristian          #+#    #+#             */
-/*   Updated: 2022/06/25 13:11:15 by cristian         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:49:04 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ fin de lacadena. Si una palabra tiene una sola letra, debe ir en mayúscula. */
 
 #include <unistd.h>
 
-void	ft_str_capitalizer(char *str)
+void	ft_rstr_capitalizer(char *str)
 {
 	int	pos;
 
@@ -53,7 +53,7 @@ int	main (int argc, char **argv)
 		pos = 1;
 		while (pos < argc)
 		{
-			ft_str_capitalizer(argv[pos]);
+			ft_rstr_capitalizer(argv[pos]);
 			pos++;
 		}
 	}

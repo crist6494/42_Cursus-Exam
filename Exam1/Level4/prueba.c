@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   prueba.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 16:30:23 by cmorales          #+#    #+#             */
-/*   Updated: 2022/10/06 20:27:18 by cmorales         ###   ########.fr       */
+/*   Created: 2022/10/06 20:13:22 by cmorales          #+#    #+#             */
+/*   Updated: 2022/10/06 20:29:56 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Escriba una función que tome una cadena, la divida en palabras y las devuelva como
-una matriz de cadenas terminada en NULL.
-Una "palabra" se define como una parte de una cadena delimitada por espacios/tablillas/nuevas
-o por el inicio/fin de la cadena. */
-
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
-
-char	**ft_split(char *str)
+char **ft_split(char *str)
 {
-	int	i;
-	int	i2;
-	int	i3;
+	int i = 0;
+	int i2 = 0;
+	int i3;
 	char **esp;
-
- 	i = 0;
-	i2 = 0;
+	
 	esp = (char**)malloc(sizeof(char) * 100);
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
 		i++;
@@ -39,7 +32,7 @@ char	**ft_split(char *str)
 			esp[i2] = (char*)malloc(sizeof(char) * 100);
 			while (str[i] > ' ')
 			{
-				esp[i2][i3] =str[i];
+				esp[i2][i3] = str[i];
 				i++;
 				i3++;
 			}
@@ -53,16 +46,30 @@ char	**ft_split(char *str)
 	return (esp);
 }
 
-int main(int ac, char **av)
+void ft_putstr(char *str)
 {
-	char **str;
-	if (ac == 2)
-		str = ft_split(av[1]);
-	int i = 0;
-	while (str[i])
+	while (*str)
 	{
-		printf("%s\n", str[i]);
-		i++;
+		write(1, str, 1);
+		str++;
+	}
+}
+
+int main (int argc, char **argv)
+{
+	int i = 1;
+	char **esp;
+
+	if (argc > 1)
+	{
+		esp = ft_split(argv[1]);
+		while (esp[i])
+		{
+			ft_putstr(esp[i]);
+			write (1, " ", 1);
+			i++;
+		}
+		ft_putstr(esp[0]);
 	}
 	return (0);
 }
