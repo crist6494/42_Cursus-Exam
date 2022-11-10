@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:54:12 by cmorales          #+#    #+#             */
-/*   Updated: 2022/10/27 20:28:50 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/11/10 19:49:22 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,38 @@ La entrada, cuando la haya, será válida. */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-void	fprime( int n)
+void	fprime(unsigned int num)
 {
-	int prime;
-	prime = 2;
-
-	if(n == 1)
-		printf("1");
-	while(prime <= n)
-	{
-		if(n % prime == 0)
-		{
-			printf("%d", prime);
-			if(n == prime)
-				break;
-			printf("*");
-			n = n / prime;
-			prime = 2;
-		}
-		prime++;
-	}
+	unsigned int prime;
 	
+	if (num == 1)
+		printf("1");
+	else
+	{
+		prime = 2;
+		while (num > 1)
+		{
+			if (num % prime == 0)
+			{
+				printf ("%d", prime);
+				num = num / prime;
+				if (num > 1)
+					printf("*");
+				prime--;
+			}
+			prime++;
+		}
+	}
 }
-int main (int argc, char **argv)
-{
+
+
+int main(int argc, char **argv)
+{	
 	if (argc == 2)
 		fprime(atoi(argv[1]));
-	printf ("\n");
+	printf("\n");
 	return (0);
+}return (0);
 }
