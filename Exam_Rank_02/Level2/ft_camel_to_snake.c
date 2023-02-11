@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_camel_to_snake.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:38:24 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/19 17:24:28 by cristian         ###   ########.fr       */
+/*   Updated: 2022/11/20 22:38:39 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ int	main (int argc, char **argv)
 {
 	
 	if (argc == 2)
-	{
 		camel_to_snake(argv[1]);
-	}
 	write (1, "\n", 1);
 	return (0);
 }

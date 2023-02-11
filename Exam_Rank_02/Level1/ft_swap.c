@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 20:12:14 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/15 20:24:25 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/11/20 22:08:44 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_swap(int *a, int *b)
 {
 	int	aux;
 	
-	*a = aux;
-	*b = *a;
-	aux = *b;
+	aux = *a;
+	*a = *b;
+	*b = aux;
 }
 
 #include <stdio.h>

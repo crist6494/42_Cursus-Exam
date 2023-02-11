@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:57:29 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/27 19:23:22 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/11/21 23:40:08 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	*ft_rrange(int start, int end)
 int main()
 {
 	int i = 0;
-	int *res = ft_rrange(0, -3);
+	int *res = ft_rrange(0, 3);
 	while (i < 4)
 	{
 		printf("%d,", res[i]);

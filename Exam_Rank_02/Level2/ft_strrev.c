@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:17:18 by cristian          #+#    #+#             */
-/*   Updated: 2022/06/19 16:14:18 by cristian         ###   ########.fr       */
+/*   Updated: 2022/11/20 23:30:14 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ char	*ft_strrev(char *str)
 		str[pos] = aux;
 		pos++;
 		len--;
-	}	
+	}
+	//str[pos] = 0;	
 	return (str);
 }
 

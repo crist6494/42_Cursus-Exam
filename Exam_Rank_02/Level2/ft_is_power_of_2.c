@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:34:21 by cmorales          #+#    #+#             */
-/*   Updated: 2022/06/20 17:47:54 by cmorales         ###   ########.fr       */
+/*   Updated: 2022/11/20 22:45:52 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int     is_power_of_2(unsigned int n)
 
 int main()
 {
-	printf ("%d",(is_power_of_2(1) ? printf("Yes\n") : printf("No\n")));
+	printf ("%d",(is_power_of_2(5) ? printf("Yes\n") : printf("No\n")));
 	return (0);
 }

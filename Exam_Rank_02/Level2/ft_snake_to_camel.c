@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_bits.c                                    :+:      :+:    :+:   */
+/*   ft_snake_to_camel.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 19:00:18 by cmorales          #+#    #+#             */
-/*   Updated: 2022/09/22 20:28:12 by cmorales         ###   ########.fr       */
+/*   Created: 2022/06/19 17:25:54 by cristian          #+#    #+#             */
+/*   Updated: 2022/11/20 23:11:42 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Escriba una función que tome un byte, y lo imprima en binario
-
 #include <unistd.h>
 
-void	print_bits(unsigned char octet)
+void	snake_to_camel(char *str)
 {
 	int	pos;
 
-	pos = 128;
-	
-	while (pos > 0)
+	pos = 0;
+	while (str[pos])
 	{
-		if (octet >= pos)
+		if (str[pos] == '_')
 		{
-			write (1, "1", 1);
-			octet = octet - pos;
+			pos++;
+			str[pos] = str[pos] - 32;
 		}
-		else
-		{
-			write (1, "0", 1);
-			pos = pos / 2;
-		}
+		write(1, &str[pos], 1);
+		pos++;
 	}
 }
-int	main(void)
+int	main(int argc, char **argv)
 {
-	print_bits(24);
-	write(1, "\n", 1);
+	int	pos;
+
+	pos = 0;
+	if (argc == 2)
+		snake_to_camel(argv[1]);
+	write (1, "\n", 1);
+	return (0);
 }
