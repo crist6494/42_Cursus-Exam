@@ -6,7 +6,7 @@
 /*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 20:22:06 by cmorales          #+#    #+#             */
-/*   Updated: 2023/09/28 11:54:22 by cmorales         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:04:21 by cmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int cd(char **av, int i)
 		return(print_err("Error: bad arguments\n"));
 	if(chdir(av[1]) == 0)
 	{
-		printf("Av: %s\n", av[0]);
+		printf("Av: %s\n", av[1]);
 		char *buffer;
 		buffer = getcwd(NULL, 0);
 		if (!buffer)
@@ -99,6 +99,8 @@ int main(int ac, char **av, char **env)
 		{
 			i++;
 			av += i;
+			printf("-------Av: %s\n", av[i]);
+			printf("-------Av: %s\n", av[1]);
 			i = 0;
 			while(av[i] && strcmp(av[i], "|") && strcmp(av[i], ";"))
 				i++;
