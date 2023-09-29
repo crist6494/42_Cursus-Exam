@@ -1,114 +1,77 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   microshell.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cmorales <moralesrojascr@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 20:22:06 by cmorales          #+#    #+#             */
-/*   Updated: 2023/09/28 20:04:21 by cmorales         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "unistd.h"
+#include "string.h"
+#include <sys/types.h>
+#include <sys/wait.h>
 
-#include "microshell.h"
-#include "stdlib.h"
-
-int print_err(const char *src)
+int p_err(const char *src)
 {
 	while(*src)
-	{
-		write(STDERR_FILENO, src, 1);
-		src++;
-	}
-	return (1);
+		write(2, src++, 1);
+	return(1);
 }
 
 int cd(char **av, int i)
 {
 	if(i != 2)
-		return(print_err("Error: bad arguments\n"));
-	if(chdir(av[1]) == 0)
-	{
-		printf("Av: %s\n", av[1]);
-		char *buffer;
-		buffer = getcwd(NULL, 0);
-		if (!buffer)
-			return(print_err("Directory not found\n"));
-		printf("Directorio actual: %s\n", buffer);
-		free(buffer);
-	}
-	else
-		return(print_err("Error: cd: cannot change directory to path_to_change: "), print_err(av[2]), print_err("\n"));
-	return (0);
+		return(p_err("error: cd: bad arguments\n"));
+	else if(chdir(av[1]) == -1)
+		return(p_err("error: cd: cannot change directory to "), p_err(av[1]), p_err("\n"));
+	return(0);
 }
-
-/* int cd(char **argv, int i) 
-{
-    if (i != 2)
-        return print_err("error: cd: bad arguments\n"); // Return an error if the argument count is not 2
-    else if (chdir(argv[1]) == -1)
-        return print_err("error: cd: cannot change directory to "), print_err(argv[1]), print_err("\n"); // Return an error if directory change fails
-	else
-	{
-		char *buffer;
-		buffer = getcwd(NULL, 0);
-		if (!buffer)
-			return(print_err("Directory not found\n"));
-		printf("Directorio actual: %s\n", buffer);
-		free(buffer);
-	}
-    return 0; // Return 0 on success
-}  */
 
 int exec(char **av, char **env, int i)
 {
-    int fd[2];
-    int status;
-    int has_pipe = av[i] && (strcmp(av[1], "|") == 0);
+	int status;
+	int fd[2];
+	int has_pipe;
 
-    if (has_pipe && pipe(fd) == -1)
-        return print_err("error: fatal\n");
+	if(av[i] && !strcmp(av[i], "|"))
+		has_pipe = 1;
+	else
+		has_pipe = 0;
+	
+	if(has_pipe && pipe(fd) == -1)
+		return(p_err("error: fatal\n"));
+	
+	int pid = fork();
 
-    int pid = fork();
-
-    if (pid == 0)
-    {
-        av[i] = 0;
-        if (has_pipe && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
-            return print_err("error: fatal\n");
-        execve(*av, av, env);
-        return print_err("error: cannot execute "), print_err(*av), print_err("\n");
-    }
-    else
-    {
-        if (has_pipe && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
-            return print_err("error: fatal\n");
-        waitpid(pid, &status, 0);
-    }
-    return WIFEXITED(status) && WEXITSTATUS(status);
+	if(pid == -1)
+		return(p_err("error: fatal\n"));
+	if(!pid)
+	{
+		av[i] = 0;//Para que excevec sepa cuando termina los argumentos
+		if(has_pipe && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
+			return(p_err("error: fatal\n"));
+		execve(*av, av, env);
+		return(p_err("error: cannot execute "), p_err(*av), p_err("\n"));
+	}
+	waitpid(pid, &status, 0);//Esperamos al hijo
+	if(has_pipe && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
+		return(p_err("error: fatal\n"));
+	if(WIFEXITED(status))//Si el codigo fue correcto devuelve el estado de salida del proceso hijo
+		return(WEXITSTATUS(status));
+	else
+		return(1);
 }
 
 int main(int ac, char **av, char **env)
 {
-	int status;
 	int i = 0;
-	
+	int status = 0;
+
 	if(ac > 1)
 	{
-		while(av[i])
+		while(av[i] && av[++i])//Sumamos aqui antes y comprobamos para no saltar a las env
 		{
-			i++;
 			av += i;
-			printf("-------Av: %s\n", av[i]);
-			printf("-------Av: %s\n", av[1]);
 			i = 0;
 			while(av[i] && strcmp(av[i], "|") && strcmp(av[i], ";"))
 				i++;
-			if(strcmp(*av, "cd") == 0)
+			if(!strcmp(*av, "cd"))
 				status = cd(av, i);
-			else if(i != 0)
+			else if(i)
 				status = exec(av, env, i);
 		}
 	}
-	return (status);
+	return(status);
 }

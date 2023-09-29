@@ -27,6 +27,8 @@ int exec(char **av, char **env, int i)
 	int fd[2];
 	int has_pipe = av[i] && !strcmp(av[i], "|");
 
+	if(av[i] && !strcmp(av[i], "|"))
+
 	if(has_pipe && pipe(fd) == -1)
 		return (print_err("error:fatal\n"));
 	int pid;
@@ -54,11 +56,11 @@ int exec(char **av, char **env, int i)
 int main(int ac, char **av, char **env)
 {
 	int i = 0;
-	int status;
+	int status = 0;
 
 	if(ac > 1)
 	{
-		while(av[i] && av[i++])
+		while(av[i])
 		{
 			av += i;
 			i = 0;
@@ -68,6 +70,8 @@ int main(int ac, char **av, char **env)
 				status = cd(av, i);
 			else if(i)
 				status = exec(av, env, i);
+			if(av[i])
+				i++;
 		}
 	}
 	return (status);
